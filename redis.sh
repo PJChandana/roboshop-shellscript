@@ -8,7 +8,7 @@ N="\e[0m"
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
-exec &?$LOGFILE
+exec &>>$LOGFILE
 
 echo "script started executing at $TIMESTAMP" &>> $LOGFILE
 
@@ -27,7 +27,7 @@ then
     echo -e "$R ERROR:: Please run this script with root access $N"
     exit 1 # you can give other than 0
 else
-    echo "You are root reddis"
+    echo "You are root redis"
 fi # fi means reverse of if, indicating condition end
 
 dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
@@ -36,22 +36,22 @@ VALIDATE $? "Installing Remi release"
 
 dnf module enable redis:remi-6.2 -y
 
-VALIDATE $? "Enable reddis"
+VALIDATE $? "Enable redis"
 
 dnf install redis -y
 
-VALIDATE $? "Installing reddis"
+VALIDATE $? "Installing redis"
 
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf
 
-VALIDATE $? "coying config file"
+VALIDATE $? "copying config file"
 
-systemctl enable reddis 
+systemctl enable redis 
 
-VALIDATE $? "Enabling reddis"
+VALIDATE $? "Enabling redis"
 
-systemctl start reddis 
+systemctl start redis 
 
-VALIDATE $? "Starting reddis"
+VALIDATE $? "Starting redis"
 
 
