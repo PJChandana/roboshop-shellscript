@@ -5,12 +5,12 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-MONGDB_HOST=mongodb.awsaiops.online
+MONGDB_HOST=mongodb.daws76s.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "script started executing at $TIMESTAMP" &>> $LOGFILE
+echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -20,7 +20,7 @@ VALIDATE(){
     else
         echo -e "$2 ... $G SUCCESS $N"
     fi
-}#
+}
 
 if [ $ID -ne 0 ]
 then
@@ -63,7 +63,8 @@ cd /app
 
 unzip -o /tmp/catalogue.zip  &>> $LOGFILE
 
-VALIDATE $? "unzipping catalogue
+VALIDATE $? "unzipping catalogue"
+
 npm install  &>> $LOGFILE
 
 VALIDATE $? "Installing dependencies"
@@ -95,4 +96,4 @@ VALIDATE $? "Installing MongoDB client"
 
 mongo --host $MONGDB_HOST </app/schema/catalogue.js &>> $LOGFILE
 
-VALIDATE $? "Loading catalogue data into MongoDB"
+VALIDATE $? "Loading catalouge data into MongoDB"
