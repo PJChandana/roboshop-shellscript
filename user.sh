@@ -5,12 +5,12 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-MONGDB_HOST=mongodb.awsaiops.online
+MONGDB_HOST=mongodb.daws76s.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "script started executing at $TIMESTAMP" &>> $LOGFILE
+echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -20,7 +20,7 @@ VALIDATE(){
     else
         echo -e "$2 ... $G SUCCESS $N"
     fi
-}#
+}
 
 if [ $ID -ne 0 ]
 then
@@ -55,7 +55,7 @@ mkdir -p /app
 
 VALIDATE $? "creating app directory"
 
-curl -L -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip  &>> $LOGFILE
+curl -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip  &>> $LOGFILE
 
 VALIDATE $? "Downloading user application"
 
@@ -65,11 +65,11 @@ unzip -o /tmp/user.zip  &>> $LOGFILE
 
 VALIDATE $? "unzipping user"
 
-npm install
+npm install  &>> $LOGFILE
 
 VALIDATE $? "Installing dependencies"
 
-cp home/centos/roboshop-shellscript/user.service /etc/systemd/system/user.service
+cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service
 
 VALIDATE $? "Copying user service file"
 
@@ -85,7 +85,7 @@ systemctl start user &>> $LOGFILE
 
 VALIDATE $? "Starting user"
 
-cp home/centos/roboshop-shellscript /etc/yum.repos.d/mongo.repo
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 
 VALIDATE $? "copying mongodb repo"
 
@@ -96,4 +96,3 @@ VALIDATE $? "Installing MongoDB client"
 mongo --host $MONGDB_HOST </app/schema/user.js &>> $LOGFILE
 
 VALIDATE $? "Loading user data into MongoDB"
-
