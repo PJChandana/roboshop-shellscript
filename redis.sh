@@ -48,7 +48,7 @@ VALIDATE $? "coying config file"
 
 systemctl enable reddis 
 
-VALIDATE $? "Enable reddis"
+VALIDATE $? "Enabling reddis"
 
 systemctl start reddis 
 
