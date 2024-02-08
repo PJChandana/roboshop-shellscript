@@ -55,32 +55,3 @@ systemctl start reddis
 VALIDATE $? "Starting reddis"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
