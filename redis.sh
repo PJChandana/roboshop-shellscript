@@ -54,4 +54,8 @@ systemctl start redis
 
 VALIDATE $? "Starting Redis"
 
+systemctl restart redis
+
+VALIDATE $? "Restarting redis"
+
 
