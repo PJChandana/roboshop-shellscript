@@ -55,7 +55,7 @@ mkdir -p /app
 
 VALIDATE $? "creating app directory"
 
-curl -L -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip
+curl -L -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>> $LOGFILE
 
 VALIDATE $? "Downloading cart application"
 
@@ -69,7 +69,7 @@ npm install  &>> $LOGFILE
 
 VALIDATE $? "Installing dependencies"
 
-cp '/home/centos/roboshop-shellscript/cart.service/etc/systemd/system/cart.service'
+cp /home/centos/roboshop-shellscript/cart.service /etc/systemd/system/cart.service
 
 VALIDATE $? "Copying cart service file"
 
