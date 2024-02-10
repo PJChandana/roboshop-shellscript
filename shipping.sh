@@ -53,11 +53,12 @@ VALIDATE $? "Downloading shipping"
 
 cd /app
 
-
-unzip /tmp/shipping.zip &>> $LOGFILE
+unzip -o /tmp/shipping.zip &>> $LOGFILE
 
 VALIDATE $? "Unzipping the shipping"
+
 cd /app
+
 mvn clean package &>> $LOGFILE
 
 VALIDATE $? "cleaning the package"

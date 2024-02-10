@@ -53,7 +53,7 @@ VALIDATE $? "copying payment"
 
 cd /app
 
-unzip /tmp/payment.zip &>> $LOGFILE
+unzip  -o /tmp/payment.zip &>> $LOGFILE
  
 VALIDATE $? "unzipping payment"
 
@@ -65,7 +65,7 @@ VALIDATE $? "Installing payment"
 
 cp /home/centos/roboshop-shellscript /etc/systemd/system/payment.service &>> $LOGFILE
 
-VALIDATE $? "copying the spayment service"
+VALIDATE $? "copying the payment service"
 
 systemctl daemon-reload &>> $LOGFILE
 
