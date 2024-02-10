@@ -51,13 +51,13 @@ curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip
 
 VALIDATE $? "copying payment"
 
-cd /app &>> $LOGFILE
+cd /app
 
 unzip /tmp/payment.zip &>> $LOGFILE
  
 VALIDATE $? "unzipping payment"
 
-cd /app  &>> $LOGFILE
+cd /app
 
 pip3.6 install -r requirements.txt &>> $LOGFILE
 
