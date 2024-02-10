@@ -49,7 +49,7 @@ curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip
 
 VALIDATE $? "copying payment"
 
-cd /app 
+cd /app &>> $LOGFILE
 
 unzip /tmp/payment.zip &>> $LOGFILE
  
