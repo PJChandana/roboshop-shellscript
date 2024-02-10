@@ -44,7 +44,6 @@ VALIDATE $? "Starting nginx"
 
 rm -rf /usr/share/nginx/html/ &>> $LOGFILE
 
-
 VALIDATE $? "removed default website"
 
 curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip &>> $LOGFILE
