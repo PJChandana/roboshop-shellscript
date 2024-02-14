@@ -6,7 +6,7 @@ INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipp
 
 for i in "${INSTANCE[@]}"
 do 
-    echo "instance is : $1"
+    echo "instance is : $i"
     if [$i == "mongodb" ] || [$i == "mysql"] || [ $i == "shipping"]
     then
         INSTANCE_TYPE="t3.small"
@@ -14,5 +14,5 @@ do
         INSTANCE_TYPE="t2.micro"
     fi
 
-    aws ec2 run-instances --image-id ami-0f3c7d07486cad139 --instance-type t2.micro --security-group-ids sg-03ceb08bf2c630ec0 
+    aws ec2 run-instances --image-id ami-0f3c7d07486cad139 --instance-type $INSTANCE_TYPE --security-group-ids sg-03ceb08bf2c630ec0 
 done
