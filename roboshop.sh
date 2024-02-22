@@ -4,7 +4,7 @@ AMI=ami-0f3c7d07486cad139
 SG_ID=sg-03ceb08bf2c630ec0
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 ZONE_ID=Z09045333CD1CXO8E06XN
-DOMAIN_NAME=awsaiops.online
+DOMAIN_NAME="awsaiops.online"
 
 for i in "${INSTANCES[@]}"
 do 
