@@ -4,7 +4,7 @@ AMI=ami-0f3c7d07486cad139
 SG_ID=sg-03ceb08bf2c630ec0 
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 
-for i in "${INSTANCE[@]}"
+for i in "${INSTANCES[@]}"
 do 
     echo "instance is : $i"
     if [$i == "mongodb" ] || [$i == "mysql"] || [ $i == "shipping" ]
@@ -16,3 +16,4 @@ do
 
     aws ec2 run-instances --image-id ami-0f3c7d07486cad139 --instance-type $INSTANCE_TYPE --security-group-ids sg-03ceb08bf2c630ec0 --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]"
 done
+
